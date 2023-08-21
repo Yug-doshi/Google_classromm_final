@@ -1,0 +1,71 @@
+.cont{
+    display:flex;
+    background-color: rgb(0, 187, 255);
+    width:300px;
+    height:100px;
+    margin-top:80px;
+    margin-left:8%;
+}
+
+.cont2{
+    display:flex;
+    background-color: rgb(255, 0, 81);
+    width:300px;
+    height:100px;
+    margin-top:80px;
+    margin-left:10%;
+}
+
+.cont3{
+    display:flex;
+    background-color: rgb(6, 199, 103);
+    width:300px;
+    height:100px;
+    margin-top:80px;
+}
+
+.stud_icon{
+    height:90px;
+    padding-top: 10px;
+    width:90px;
+    padding-left:15px;
+}
+
+.info{
+    color:white;
+    font-weight:bold;
+}
+
+.num{
+    font-size:40px;
+    text-align: center;
+}
+
+.text{
+    margin-top:-10px;
+}
+
+.box{
+    padding-left:25%;
+}
+
+.box2{
+    padding-left:20%;
+}
+
+.heading{
+    text-align: center;
+    text-decoration: underline;
+}
+
+.main{
+    display: flex;
+}
+
+.myheading{
+    top:10px;
+}
+
+.header{
+    text-align: center;
+}

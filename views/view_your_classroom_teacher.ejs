@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Classrooms</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <style>
+    .main{
+        display:flex;
+    }
+    .classroom{
+        width:300px;
+        height:350px;
+        /* background-color: red; */
+        border:1px solid black;
+        border-radius:10px;
+        color:white;
+    }
+    .teacher_img{
+        display:inline-block;
+        /* background-color:red; */
+        height:100px;
+        width:80px;
+        margin-top:10px; 
+        margin-left:90px;
+        border-radius:50px;
+    }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="Admin_home.php">MSMS|Teacher</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <li class="nav-item dropdown ms-5">
+          <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Results and Classrooms
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="/Create_classroom_teacher">Create Classroom</a></li>
+            <li><a class="dropdown-item" href="/view_your_classroom_teacher">View Your Classroom</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="d-flex logout" action = "/Logout">
+        <button class="btn btn-primary mr-3" type="submit">Logout</button>
+      </form>
+    </div>
+  </div>
+</nav>
+<br>
+<h1 align = "center" class = "total text-success mt-3">Total Classrooms: <%= details.length %></h1> <hr>
+    <form action = "view_your_classroom_teacher.php" align = "center">
+        <input type = "text" placeholder = "Enter name of Classroom to search:" name = "name" class = " form-control w-25 border border-dark mt-4 mb-4" style = "margin-left:38vw;text-align:center;">
+        <input type = "submit" value = "Search" class = "btn btn-success">
+    </form>
+<div class = "main">
+    <% details.forEach(function(item){  %>
+            <div class = "classroom ms-5 mb-4">
+                <div class = "image" style = "background-image:url('uploads/<%= item.coverimage %>');height:140px;color:white;padding-top:20px;border-radius:10px;">
+       
+                <a style = "color: white;"class = "ms-4 h3" href = "/Class_Teacher?Class_code=<%= item.classcode %>" ><%= item.classname %></a>
+ 
+                <div style = "display:flex">
+                    <p class = "ms-4 mt-4" style="color: red; font-size: 25px;"><%= item.teachername %></p>
+                    <div class = "teacher_img" style = "background-image:url('');background-size:cover;background-repeat:no-repeat;"></div>
+                </div>
+                <p style = "color:black; font-size: 22px;" class = "ms-3">Class code: <b><%= item.classcode %></b></p>
+                <hr style = "color:black;">
+                <a href = "/Delete_classroom_Teacher?classcode=<%= item.classcode %>"><img src="uploads/delete.png" style="height: 60px; width: 70px; margin-left: 30px; margin-bottom: 10px;"/></a>
+                <a href = "/Update_classroom_Teacher?classcode=<%= item.classcode %>"><img src="uploads/update.png" style="height: 75px; width: 85px; margin-left: 45px; margin-bottom: 5px;"/></a>
+                </div> 
+            </div>
+        <% }) %>
+</div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title><% teacher_name_display %></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">MSMS</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-5">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/Class_Teacher?Class_code=<%= classcode_navbar %>">Result and Project</a>
+        </li>
+        <li class="nav-item ms-4">
+          <a class="nav-link active" href="/Class_people?<%= classcode_navbar %>">People</a>
+        </li>
+        <li class="nav-item ms-4">
+          <a class="nav-link active" href="/Upload_Result?<%= classcode_navbar %>">Upload Result</a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search" action = "/Logout">
+        <button class="btn btn-primary" type="submit">Logout</button>
+      </form>
+    </div>
+  </div>
+</nav>
+    <div style = "text-align:center;width:50vw;margin-left:25vw;">
+        <h2 style = "color:#0f9669;">Teachers</h2>
+        <div style = "height:2px;background-color:#0f9669"></div>
+        <div style = "display:flex;justify-content: center;">
+            <div style = "">
+            </div>
+            <p class = "font-weight-bold ms-4 h4 mt-2"><%=  teacher_name_display  %></p>
+        </div>
+
+        <h2 style = "color:#0f9669;" class = "mt-5">Classmates</h2>
+        <div style = "height:2px;background-color:#0f9669"></div>
+            <% details.forEach(function(item){%>
+                <div style = "display:flex;justify-content:center;">
+                <img src="uploads/<%= item.photo %>" style="height: 80px; width: 80px; border-radius: 10px;margin-right: 150px;  margin-top: 10px;"/>
+                <p class = "font-weight-bold ms-4 h4 mt-4" style="margin-right: 40px;"><%= item.eno %></p>
+                <p class = "font-weight-bold ms-4 h4 mt-4" style="margin-right: 200px;"> <%= item.fname %>  <%= item.lname %></p>
+                <a href = "/Download_Project_admin?file=<%= item.result %>">
+                <img src = "uploads/download.png" style = "height:30px;position:absolute;right:0;margin-right:27vw;" class = "mt-4">
+                </a>
+            </div>
+                <hr>
+           <% })  %>
+    </div>
+</body>
+</html>
